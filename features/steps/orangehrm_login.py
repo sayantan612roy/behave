@@ -1,5 +1,6 @@
 from behave import *
 from selenium import webdriver
+import pytest
 
 
 @given('I launch the chrome browser')
@@ -27,7 +28,7 @@ def click_login_button(context):
 def check_log_in(context):
     try:
         actual_text = context.driver.find_element_by_xpath("//h1[contains(text(),'Dashboard')]").text
-    except Exception:
+    except:
         context.driver.close()
         assert False, "Test Failed Cannot find Dashboard"
     if actual_text == "Dashboard":
